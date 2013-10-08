@@ -25,6 +25,7 @@ block content
 				p Noise maker (de noche)
 		
 
+
 		x-card.opaque
 			h1 Lo que veremos
 
@@ -38,17 +39,19 @@ block content
 			h1 ... y después ...
 
 
-		x-card.opaque
-			h1 3. I'm going to blow up your minds
 
 		x-card.opaque
-			h1 or your ears
+			h1 3. Váis a flipar
+
+		x-card.opaque
+			h1 o vuestros oídos van a flipar
 
 		x-card.opaque
 			h1 ¿"Brace, brace"?
 
 		x-card.opaque
 			h1 ¡Corred!
+
 
 		
 		x-card.opaque
@@ -304,158 +307,158 @@ block content
 				p repetir <code>renderer.render(scene, camera)</code> por escena
 		
 		x-card
-			h1 That's it.
+			h1 Y ya.
 		
 	
 
 		x-card
-			h1 Playing live
+			h1 Tocar en vivo
 
 		x-card
-			h1 Song skeleton sequenced in Renoise
+			h1 El esqueleto de la canción secuenciado con Renoise
 
 		x-card
-			h1 It's a tracker
+			h1 Es un tracker
 
 		x-card
-			h1 In the future,<br />own web editor
+			h1 En el futuro,<br />un editor web
 
 
-
-		x-card
-			div
-				h1 Renoise song format
-				p XML based
-
-		x-card
-			h1 Export to JSON
 
 		x-card
 			div
-				h1 Tracker concepts
-				p Patterns, tracks, rows
-				p "Like Excel, but funnier"
+				h1 Formato de canciones en Renoise
+				p Basado en XML
+
+		x-card
+			h1 Exportar a JSON
 
 		x-card
 			div
-				h1 Plus the order list
-				p List of patterns to be played in order
+				h1 Conceptos tracker
+				p Patrones, canales, filas
+				p "Como Excel, pero divertido"
+
+		x-card
+			div
+				h1 Más la order list
+				p Lista de patrones y el orden en que serán reproducidos
 	
 
 
 		x-card
-			h1 Build a list of events
+			h1 Construimos una lista de eventos
 
 		x-card
 			div
-				h1 Example
+				h1 Por ejemplo
 				p <code>{<br />type: NOTE_ON, note_number: 40,<br />timestamp: 0.00032,<br />order: 1, pattern: 3, row: 4<br />instrument: 3, volume: 0.5<br />}</code>
 
 		x-card
-			h1 Extra values for synchronising visuals
+			h1 Valores extra para sincronizar los visuales
 
 		x-card
-			h1 Sort by timestamp
+			h1 Ordenar por timestamp
 
 
 
 
 		x-card
-			h1 Schedule audio events at precise times
+			h1 Programar eventos de audio con mucha precisión
 
 		x-card
 			div
-				h1 But audio events can't be cancelled
-				p Can't schedule an entire song and change your mind later
+				h1 Pero los eventos de audio no se pueden cancelar
+				p Imposible programar una canción entera y cambiar de opinión después
 
 		x-card
 			div
 				h1 requestAuditionFrame
-				p Periodically fire bursts of events
-				p Whatever fits in the audio buffer
+				p Lanzar andanadas de eventos periódicamente
+				p Lo que quepa en el buffer de audio
 
 		x-card
 			div
-				h1 Can be off
-				p Deal with it
+				h1 Puede sonar un poco off
+				p Es lo que hay
 
 
 
 		x-card
-			h1 Making the most of note data
-
-		x-card
-			div
-				h1 Initially they are in Note-Octave format
-				p E.g. <code>C-4</code>
+			h1 Explotar al máximo los datos de notas
 
 		x-card
 			div
-				h1 Convert them to MIDI note numbers
-				p E.g. <code>C-4</code> is <code>40</code>
+				h1 Inicialmente están en el formato Nota-Octava
+				p Ej: <code>C-4</code> = DO, cuarta octava
 
 		x-card
 			div
-				h1 Then you can
-				p Transpose them
-				p Build arpeggios, chords
-				p Use them visually
-
-
-		x-card
-			h1 But why bother, when there's Dancer.js?
+				h1 Los convertimos en números de nota MIDI
+				p Ej: <code>C-4</code> es <code>40</code>
 
 		x-card
 			div
-				h1 Note data is more detailed than FFT
-				p An FFT can't tell from multiple instruments at once in the same frequency band
+				h1 Entonces se pueden...
+				p Trasponer
+				p Construir arpeggios o acordes
+				p Usarlos visualmente
+
+
+		x-card
+			h1 ¿Pero por qué molestarse, si existe Dancer.js?
 
 		x-card
 			div
-				h1 React to <em>very</em> specific events
-				p E.g. on bass <strong>drum</strong> beats,
-				p but <strong>not</strong> on bass line notes
+				h1 Los datos de una nota son más detallados que la FFT (TRF)
+				p Con FFT no puedes distinguir instrumentos sonando en la misma banda de frecuencia
 
 		x-card
 			div
-				h1 Else,
-				p deal with thresholds,
-				p attack and decay times...
-				p (this is not a haiku).
-
-
-
-		x-card
-			h1 Gotchas
+				h1 Reaccionar a eventos <em>muy</em> específicos
+				p Ej: cuando suene el bombo,
+				p pero <strong>no</strong> cuando suene el bajo
 
 		x-card
 			div
-				h1 Careful with clipping
-				p Usually horrible&mdash;unless you're into noise music
+				h1 De la otra manera,
+				p trata con umbrales,
+				p tiempos de ataque y decremento...
+				p (esto no es un haiku).
+
+
+
+		x-card
+			h1 Ojo
 
 		x-card
 			div
-				h1 Limit and compress
-				p AudioGain and DynamicCompressor nodes are your friends
+				h1 Cuidadito con saturar
+				p Normalmente horrible&mdash;a menos que te vaya la noise music
 
 		x-card
 			div
-				h1 Technology in flux
-				p It can break, leak, change or explode in your face
+				h1 Limitar y comprimir
+				p <code>AudioGain</code> y <code>DynamicCompressor</code> serán tus amigos
+
+		x-card
+			div
+				h1 Tecnología en desarrollo
+				p Puede petar, devorar memoria, cambiar sin avisar o explotarte en las narices
 
 
 
 		x-card
-			h1 But that is part of the fun
+			h1 Pero eso es parte de la diversión
 
 		x-card
-			h1 Right?
+			h1 ¿No?
 
 		x-card
-			h1 Let's see if it breaks
+			h1 ¿Vemos a ver si se rompe?
 
 		x-card
-			h1 Remember about "brace, brace"
+			h1 Recordad lo de "brace, brace"
 				
 
 
@@ -466,7 +469,7 @@ block content
 		x-card
 			div
 				h1 supersole.net
-				p Download all my music
+				p ¡Bajaros toda mi música!
 
 		x-card
 			div
@@ -476,34 +479,32 @@ block content
 		x-card
 			div
 				h1 supersole.net
-				p <em>THAT</em> cheesy
+				p <em>Así</em> de horterilla
 
 
 		
 
 		x-card
-			h1 Did it break already?
+			h1 ¿Se ha roto ya?
 
 		x-card
-			h1 No?
+			h1 ¿No?
 
 		x-card
-			h1 Seems like it didn't.
+			h1 Parece que no.
 
 		x-card
-			h1 GOOD
+			h1 BIEN
 
 		
 
 		x-card
 			div
 				h1 @supersole
-				p In twitter
+				p En twitter
 
 		x-card
-			div
-				h1 @supersole
-				p Coffee, JS, music and London stuff.
+            h1 @supersole
 
 		x-card
 			h1 @supersole
@@ -515,16 +516,16 @@ block content
 
 
 		x-card
-			h1 Thanks!
+			h1 ¡Gracias!
 
 		x-card
-			h1 You...
+			h1 Sois...
 
 		x-card
-			h1 You are...
+			h1 Sois súper...
 
 		x-card
-			h1 You are awesome
+			h1 Sois súper guays
 
 
 
