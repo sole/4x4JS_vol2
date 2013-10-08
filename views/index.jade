@@ -1,0 +1,551 @@
+extend layout
+
+block content
+
+	#rendererContainer
+
+	x-deck(transition-type="fade")
+		
+		x-card.opaque
+			div
+				h1 Hello DevFest!
+				p Com anem?
+	
+		x-card.opaque
+			h1 Four to the floor JS, vol II
+	
+		x-card.opaque
+			div
+				h1 Soledad Penadés
+				p Apps Engineer en Mozilla (de día)
+
+		x-card.opaque
+			div
+				h1 @supersole
+				p Noise maker (de noche)
+		
+
+		x-card.opaque
+			h1 Lo que veremos
+
+		x-card.opaque
+			h1 1. Un poco de contexto
+
+		x-card.opaque
+			h1 2. Lo que he hecho
+
+		x-card.opaque
+			h1 ... y después ...
+
+
+		x-card.opaque
+			h1 3. I'm going to blow up your minds
+
+		x-card.opaque
+			h1 or your ears
+
+		x-card.opaque
+			h1 ¿"Brace, brace"?
+
+		x-card.opaque
+			h1 ¡Corred!
+
+		
+		x-card.opaque
+			h1 Me <em>chifla</em> la música
+
+		x-card.opaque
+			h1 El primer disco que me regalaron
+
+		x-card.opaque
+			h1 No podía dejar de escucharlo
+
+		x-card.opaque
+			h1 Mi primer desafío
+
+
+		x-card.opaque
+			h1 Los 80 eran <em>buenos tiempos</em>
+
+		x-card.opaque
+			h1 Electropop horterilla
+
+		x-card.opaque
+			h1 Videojuegos de 8 bits
+
+		x-card.opaque
+			h1 Teclados CASIO
+
+
+		x-card.opaque
+			h1 El mío:<br/>CASIO PT-100
+
+		x-card.opaque
+			h1 Pocas opciones de configuración
+
+		x-card.opaque
+			h1 Exportar === grabar en una cinta
+
+		x-card.opaque
+			h1 ¡Ya estaba bien!
+
+
+		x-card.opaque
+			h1 Y llegaron los 90
+
+		x-card.opaque
+			h1 OMG MULTIMEDIA!
+
+		x-card.opaque
+			h1 ¡Trackers!
+
+		x-card.opaque
+			h1 Compuse montones de música
+
+
+		x-card.opaque
+			h1 Demoscene
+
+		x-card.opaque
+			h1 VJing
+
+		x-card.opaque
+			h1 Actuaciones
+
+		x-card.opaque
+			h1 Es difícil coordinarse con la gente
+
+
+
+		x-card.opaque
+			h1 Síntesis de audio
+
+		x-card.opaque
+			h1 C/C++
+
+		x-card.opaque
+			h1 VSTi
+
+		x-card.opaque
+			h1 Es difícil de distribuir
+		
+
+
+		x-card.opaque
+			h1 OMG<br />JavaScript + HTML5!
+
+		x-card.opaque
+			h1 ¡Web Audio!
+
+		x-card.opaque
+			h1 ¡WebGL!
+
+		x-card.opaque
+			h1 ¡node.js!
+
+
+
+		x-card.opaque
+			h1 La mujer orquesta (con JS)
+
+		x-card.opaque
+			h1 Generar audio y vídeo
+
+		x-card.opaque
+			h1 Controlador hardware
+
+		x-card.opaque
+			h1 Todo unido con node.js
+		
+
+
+		x-card.opaque
+			h1 QuNeo hardware controller
+
+		x-card.opaque
+			h1 "for hackers"
+
+		x-card.opaque
+			h1 Botones sensibles a la presión, ¡con LEDs!
+
+		x-card.opaque
+			h1 Pequeñajo
+		
+
+
+		x-card.opaque
+			h1 QuNeo &harr; node.js:<br />OSCBridge
+
+		x-card.opaque
+			h1 UDP<br />con node-osc
+
+		x-card.opaque
+			h1 Eventos touch ===<br />nuestro servidor recibe mensajes
+
+		x-card.opaque
+			h1 Para controlar los LEDs ===<br />enviamos mensajes
+			
+
+
+		x-card.opaque
+			h1 Servidor &rarr; navegador
+
+		x-card.opaque
+			div
+				h1 Socket.IO
+				p 
+					em ¡por supuesto!
+
+		x-card.opaque
+			div
+				h1 Suscribirnos a mensajes
+				p <code>/quneo/pads/2/drum/pressure</code>
+				p <code>/quneo/pads/(\\d+)/drum/pressure</code>
+				
+
+		x-card.opaque
+			div
+				h1 Enviar mensajes
+				p <code>/quneo/leds/pads/1/*/red</code>
+
+
+
+		x-card.opaque
+			h1 Audio gear
+
+		x-card.opaque
+			div
+				h1 Modular,<br />filosofía Web Audio
+				p Entradas y salidas
+				p Bloques dentro de bloques
+
+		x-card.opaque
+			div
+				h1 Encapsular bloques nativos de Web Audio
+				p Autoregenerar oscillators y buffers
+				p Envolvente ADSR
+
+		x-card.opaque
+			div
+				h1 Nodos propios con ScriptProcessor
+				p ¡Procesar audio en JavaScript!
+
+
+
+		x-card.opaque
+			h1 ¿Audio GUI?
+
+		x-card.opaque
+			h1 Basada en Web Components<br />(via x-tag)
+
+		x-card.opaque
+			h1 <code>attachTo</code> una instancia de audio gear
+
+		x-card.opaque
+			div
+				h1 Basado en eventos
+
+
+
+		x-card.opaque
+			div
+				h1 Bajotron
+				p Monophonic multivoice unisonic bass line
+
+		x-card.opaque
+			div
+				h1 Colchonator
+				p Construir colchones con Bajotrones
+
+		x-card.opaque
+			div
+				h1 Porrompom
+				p Simple sample based drum machine
+
+		x-card.opaque
+			div
+				h1 Reverbetron
+				p Módulo de reverberación basado en impulsos
+		
+
+		
+		x-card
+			h1 Video gear
+
+		x-card
+			h1 WebGL via three.js
+
+		x-card
+			div
+				h1 Composite rendering
+				p Un renderer, muchas escenas
+
+		x-card
+			div
+				h1 Escenas procedurales
+				p Porque no soy una artista 3D
+		
+
+
+
+		x-card
+			h1 ¿Y cuál es el "truco" para componer escenas con three.js?
+
+		x-card
+			div
+				h1 Configuración del renderer
+				p <code>renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: true });</code>
+				p <code>renderer.autoClear = false;</code>
+			
+		x-card
+			div
+				h1 Y al renderizar...
+				p <code>renderer.clear()</code> una vez
+				p repetir <code>renderer.render(scene, camera)</code> por escena
+		
+		x-card
+			h1 That's it.
+		
+	
+
+		x-card
+			h1 Playing live
+
+		x-card
+			h1 Song skeleton sequenced in Renoise
+
+		x-card
+			h1 It's a tracker
+
+		x-card
+			h1 In the future,<br />own web editor
+
+
+
+		x-card
+			div
+				h1 Renoise song format
+				p XML based
+
+		x-card
+			h1 Export to JSON
+
+		x-card
+			div
+				h1 Tracker concepts
+				p Patterns, tracks, rows
+				p "Like Excel, but funnier"
+
+		x-card
+			div
+				h1 Plus the order list
+				p List of patterns to be played in order
+	
+
+
+		x-card
+			h1 Build a list of events
+
+		x-card
+			div
+				h1 Example
+				p <code>{<br />type: NOTE_ON, note_number: 40,<br />timestamp: 0.00032,<br />order: 1, pattern: 3, row: 4<br />instrument: 3, volume: 0.5<br />}</code>
+
+		x-card
+			h1 Extra values for synchronising visuals
+
+		x-card
+			h1 Sort by timestamp
+
+
+
+
+		x-card
+			h1 Schedule audio events at precise times
+
+		x-card
+			div
+				h1 But audio events can't be cancelled
+				p Can't schedule an entire song and change your mind later
+
+		x-card
+			div
+				h1 requestAuditionFrame
+				p Periodically fire bursts of events
+				p Whatever fits in the audio buffer
+
+		x-card
+			div
+				h1 Can be off
+				p Deal with it
+
+
+
+		x-card
+			h1 Making the most of note data
+
+		x-card
+			div
+				h1 Initially they are in Note-Octave format
+				p E.g. <code>C-4</code>
+
+		x-card
+			div
+				h1 Convert them to MIDI note numbers
+				p E.g. <code>C-4</code> is <code>40</code>
+
+		x-card
+			div
+				h1 Then you can
+				p Transpose them
+				p Build arpeggios, chords
+				p Use them visually
+
+
+		x-card
+			h1 But why bother, when there's Dancer.js?
+
+		x-card
+			div
+				h1 Note data is more detailed than FFT
+				p An FFT can't tell from multiple instruments at once in the same frequency band
+
+		x-card
+			div
+				h1 React to <em>very</em> specific events
+				p E.g. on bass <strong>drum</strong> beats,
+				p but <strong>not</strong> on bass line notes
+
+		x-card
+			div
+				h1 Else,
+				p deal with thresholds,
+				p attack and decay times...
+				p (this is not a haiku).
+
+
+
+		x-card
+			h1 Gotchas
+
+		x-card
+			div
+				h1 Careful with clipping
+				p Usually horrible&mdash;unless you're into noise music
+
+		x-card
+			div
+				h1 Limit and compress
+				p AudioGain and DynamicCompressor nodes are your friends
+
+		x-card
+			div
+				h1 Technology in flux
+				p It can break, leak, change or explode in your face
+
+
+
+		x-card
+			h1 But that is part of the fun
+
+		x-card
+			h1 Right?
+
+		x-card
+			h1 Let's see if it breaks
+
+		x-card
+			h1 Remember about "brace, brace"
+				
+
+
+
+		x-card
+			h1 ▶
+
+		x-card
+			div
+				h1 supersole.net
+				p Download all my music
+
+		x-card
+			div
+				h1 supersole.net
+				p "Like dancing on discos with cheese on toast"
+
+		x-card
+			div
+				h1 supersole.net
+				p <em>THAT</em> cheesy
+
+
+		
+
+		x-card
+			h1 Did it break already?
+
+		x-card
+			h1 No?
+
+		x-card
+			h1 Seems like it didn't.
+
+		x-card
+			h1 GOOD
+
+		
+
+		x-card
+			div
+				h1 @supersole
+				p In twitter
+
+		x-card
+			div
+				h1 @supersole
+				p Coffee, JS, music and London stuff.
+
+		x-card
+			h1 @supersole
+				
+
+		x-card
+			h1 @supersole
+
+
+
+		x-card
+			h1 Thanks!
+
+		x-card
+			h1 You...
+
+		x-card
+			h1 You are...
+
+		x-card
+			h1 You are awesome
+
+
+
+
+
+
+	#transport.hidden
+		button#rew ❚◀◀
+		button#play ▶
+		button#pause ❚❚
+		button#fwd ▶▶❚
+		#time 
+		#order
+	
+	#gui.hidden
+
+	script(src='/socket.io/socket.io.js', type='text/javascript')
+	script(src='/js/libs/x-tag/core.js', type='text/javascript')
+	script(src='/js/libs/x-tag/deck.js', type='text/javascript')
+	script(src='/js/libs/zepto.js', type='text/javascript')
+	script(src='/js/libs/AudioContextMonkeyPatch.js', type='text/javascript')
+	script(src='/js/libs/three.min.js', type='text/javascript')
+	script(src='/build/bundle.js', type='text/javascript')
+
