@@ -60,19 +60,24 @@ x-card.opaque {
 }
 
 x-card.opaque:nth-child(1n) {
-	background: #5fc7ab;
+	background-color: #5fc7ab;
 }
 
 x-card.opaque:nth-child(2n) {
-	background: #e49280;
+	background-color: #e49280;
 }
 
 x-card.opaque:nth-child(3n) {
-	background: #CEDF0D;
+	background-color: #CEDF0D;
 }
 
 x-card.opaque:nth-child(4n) {
-	background: #e0a727;
+	background-color: #e0a727;
+}
+
+x-card.cover {
+    background-position: center;
+    background-size: cover;
 }
 
 x-deck > x-card {

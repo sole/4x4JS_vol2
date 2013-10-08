@@ -405,8 +405,15 @@ function resetQuneo() {
 
 
 function setupDeck(player, deck) {
-	// player -> deck
 
+    // Mini hack for css backgrounds
+    var covered = document.querySelectorAll('x-card[class~="cover"]');
+    for(var i = 0; i < covered.length; i++) {
+        var card = covered[i];
+        card.style.backgroundImage = 'url(' + card.getAttribute('data-background') + ')';
+    }
+
+	// player -> deck
 	player.addEventListener('order_change', function(ev) {
 		// 'reduce' to showing 1 slide every 4 orders
 		var slideIndex = (ev.order / 4) | 0;
