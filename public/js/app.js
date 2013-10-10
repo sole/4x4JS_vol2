@@ -11,7 +11,8 @@ var audioContext,
 	transportTime,
 	transportOrder;
 
-var Orxatron = require('./Orxatron/'),
+var socket,
+	Orxatron = require('./Orxatron/'),
 	Quneo = require('quneo'),
 	gearGUI = require('supergear').GUI,
 	gear,
@@ -53,6 +54,8 @@ function onSongDataLoaded(data) {
 	gear = initialiseGear(audioContext);
 	player.gear = gear; // TODO setter?
 
+	socket = io.connect('/');
+
 	initialiseGraphics();
 
 	setupGearPlayerListeners(gear, player);
@@ -61,9 +64,9 @@ function onSongDataLoaded(data) {
 
 	setupKeyboardAndTransport();
 	
-	var socket = io.connect('/');
-
 	osc.useSocket(socket);
+
+	setupTwitterThingie();
 
 	resetQuneo();
 
@@ -208,10 +211,12 @@ function initialiseGraphics() {
 	var EffectClear = require('./gfx/EffectClear');
 	var EffectCube = require('./gfx/EffectCube');
 	var EffectBallsScene = require('./gfx/EffectBallsScene');
+	//var EffectTwitter = require('./gfx/EffectTwitter');
 
 	var sequence = [
 		[ EffectClear, { start: 87 } ], // no end == until the end
 		[ EffectCube, { start: 87 } ],
+		//[ EffectTwitter, { start: 87 } ],
 		[ EffectBallsScene, { start: 95 } ]
 	];
 
@@ -231,6 +236,11 @@ function initialiseGraphics() {
 
 		layerNumber += 10;
 
+		/* not yet... // kinda crappy but...
+		if(instance instanceof EffectTwitter) {
+			instance.useSocket(socket);
+		}*/
+		
 	});
 
 	window.addEventListener('resize', onWindowResize, false);
@@ -404,6 +414,82 @@ function resetQuneo() {
 		osc.send(Quneo.getPadLedsPath(i, 'green'), 0);
 		osc.send(Quneo.getPadLedsPath(i, 'red'), 0);
 	}
+}
+
+
+function setupTwitterThingie() {
+
+	var maxTweets = 30;
+	var existingTweets = [];
+	var tweetPointer = 0;
+	
+	var flipbox = document.querySelector('x-flipbox');
+	var flipFront = flipbox.children[0];
+	var flipBack = flipbox.children[1];
+
+	socket.on('twitter', function(data) {
+		
+		var incomingTweets = data.tweets;
+
+		incomingTweets.forEach(function(t) {
+
+			var exists = false;
+			for(var i = 0; i < existingTweets.length; i++) {
+				var existingTweet = existingTweets[i];
+
+				if(t.id === existingTweet.id) {
+					// already have that one
+					exists = true;
+					break;
+				}
+			}
+
+			if(!exists) {
+				existingTweets.push(t);
+			}
+
+		});
+
+
+		var numToRemove = existingTweets.length - maxTweets;
+		if(numToRemove > 0) {
+			console.log('removing tweets', numToRemove);
+			existingTweets.splice(0, numToRemove);
+		}
+
+	});
+
+	function formatTweet(t) {
+		return '<img src="' + t.image + '" /><strong>@' + t.username + ': </strong> ' + t.text;
+	}
+
+	function updateFlipbox() {
+		
+		if(existingTweets.length === 0) {
+			return;
+		}
+
+		tweetPointer = tweetPointer % existingTweets.length;
+		var tweet = existingTweets[tweetPointer];
+
+		if(flipbox.flipped) {
+			// showing back face
+			flipFront.innerHTML = formatTweet(tweet);
+		} else {
+			flipBack.innerHTML = formatTweet(tweet);
+		}
+
+		flipbox.toggle();
+
+		tweetPointer++;
+
+	}
+
+	socket.emit('twitter-search');
+
+	// TODO interval
+	updateFlipbox();
+	setInterval(updateFlipbox, 1000);
 }
 
 

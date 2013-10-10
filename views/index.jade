@@ -654,8 +654,7 @@ block content
 
 
 
-
-
+	
 
 	#transport.hidden
 		button#frew ❚◀◀
@@ -669,9 +668,15 @@ block content
 	
 	#gui.hidden
 
+	x-flipbox#twitter(direction="up")
+		div one
+		div two
+
+
 	script(src='/socket.io/socket.io.js', type='text/javascript')
 	script(src='/js/libs/x-tag/core.js', type='text/javascript')
 	script(src='/js/libs/x-tag/deck.js', type='text/javascript')
+	script(src='/js/libs/x-tag/flipbox.js', type='text/javascript')
 	script(src='/js/libs/zepto.js', type='text/javascript')
 	script(src='/js/libs/AudioContextMonkeyPatch.js', type='text/javascript')
 	script(src='/js/libs/three.min.js', type='text/javascript')

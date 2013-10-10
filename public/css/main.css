@@ -230,3 +230,29 @@ gear-bajotron {
 gear-oscillator-voice {
 	display: inline-block;
 }
+
+
+#twitter {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 30%;
+    background: rgba(255, 255, 0, 0.3);
+    pointer-events: none;
+}
+    #twitter > div {
+        padding: 1rem;
+        font-size: 2rem;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    #twitter img {
+        width: 6rem;
+        float: left;
+        margin: 1rem;
+    }
+
+    

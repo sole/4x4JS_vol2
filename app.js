@@ -70,6 +70,14 @@ io.sockets.on('connection', function (socket) {
 		console.log('socket received', data);
 		oscClient.send(data[0], data[1]);
 	});
+
+	lastSocket.on('twitter-search', function() {
+		if(twitterResults.length > 0) {
+			lastSocket.emit('twitter', twitterResults);
+		}
+		doTwitterSearch();
+	});
+
 });
 
 oscServer.on('message', function(msg, rinfo) {
@@ -80,7 +88,7 @@ oscServer.on('message', function(msg, rinfo) {
 	}
 });
 
-/*
+
 var twitter = require('twitter-oauth');
 
 var twitterAuth = twitter({
@@ -91,14 +99,26 @@ var twitterAuth = twitter({
 	completeCallback: '/'
 });
 
-twitterAuth.search('@supersole', nconf.get('twitterToken'), nconf.get('twitterTokenSecret'), function (err, results) {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log(results);
-	}
-});
-*/
+var twitterResults = [];
+
+function doTwitterSearch() {
+
+	twitterAuth.search('@supersole', nconf.get('twitterToken'), nconf.get('twitterTokenSecret'), function (err, results) {
+		if(err) {
+			console.log(err);
+		} else {
+			twitterResults = results;
+			console.log(results);
+			if(lastSocket) {
+				lastSocket.emit('twitter', results);
+			}
+		}
+	});
+
+}
+
+
+doTwitterSearch();
 
 // c'est fini
 server.listen(port);
