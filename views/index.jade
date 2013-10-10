@@ -12,7 +12,7 @@ block content
 				p Com anem?
 	
 		x-card.opaque
-			h1 Four to the floor JS, vol II
+			h1 Four to the floor JavaScript, vol 2
 	
 		x-card.opaque
 			div
@@ -81,47 +81,49 @@ block content
 			h1 Teclados CASIO
 
 
-		x-card.opaque
+		x-card.opaque.cover(data-background="img/casiopt100.jpg")
 			h1 El mío:<br/>CASIO PT-100
 
-		x-card.opaque
+		x-card.opaque.cover(data-background="img/casiopt100_controls.jpg")
 			h1 Pocas opciones de configuración
 
 		x-card.opaque
 			h1 Exportar === grabar en una cinta
 
 		x-card.opaque
-			h1 ¡Ya estaba bien!
+			h1 Yo era feliz ☺
 
 
 		x-card.opaque
 			h1 Y llegaron los 90
 
-		x-card.opaque
+		x-card.opaque.cover(data-background="img/multimedia.png")
 			h1 OMG MULTIMEDIA!
 
-		x-card.opaque
+		x-card.opaque.cover(data-background="img/it.png")
 			h1 ¡Trackers!
 
 		x-card.opaque
 			h1 Compuse montones de música
 
 
-		x-card.opaque
+		x-card.opaque.cover(data-background="img/ppg06_01.jpg")
 			h1 Demoscene
 
-		x-card.opaque
+		x-card.opaque.cover(data-background="img/mmt2005.jpg")
 			h1 VJing
+			p.credits photo by <a href="http://www.flickr.com/photos/_sml/88551897/in/photolist-8PRoR-8PRoT-8PRpc-8Q3UX-8Q3Vj-8Q3Vp-8Q3VN-91Sbe-a2hjd-a2hjA-a2hmu-a2hn1-a2hoM-a2hp6-bcnDC-bcnJU-bcnLn-bcnLY-bcnMN-bcnUB-bcnV2-bcnVV-bcnWB-bco4P-bco5o-bco6b-bcoaH-bcoi8-bcokx-bcomw-cimPN-cimQ6-cimQh-cimQy-cimQG-cimQR-cimRq-cimRy-cimRT-cimS4-cimS6-cimSg-cimSk-cimSn-cimSp-cimSu-cimSw-cimSD-cimSJ-cimSM-cimSQ/">David Domingo</a>
 
-		x-card.opaque
+		x-card.opaque.cover(data-background="img/offf05.jpg")
 			h1 Actuaciones
+			p.credits photo by <a href="http://www.flickr.com/photos/_sml/88590658/in/pool-37721502@N00/">David Domingo</a>
 
 		x-card.opaque
 			h1 Es difícil coordinarse con la gente
 
 
 
-		x-card.opaque
+		x-card.opaque.cover(data-background="img/sorollet.jpg")
 			h1 Síntesis de audio
 
 		x-card.opaque
@@ -131,7 +133,7 @@ block content
 			h1 VSTi
 
 		x-card.opaque
-			h1 Es difícil de distribuir
+			h1 Es difícil de distribuir ☹
 		
 
 
@@ -174,21 +176,51 @@ block content
 
 		x-card.opaque
 			h1 Pequeñajo
+
+
+
+		x-card.opaque
+			h1 USB &harr; MIDI &harr; OSC &harr; node.js
+
+		x-card.opaque
+			div
+				h1 QuNeo &harr; node.js:<br />OSCBridge
+				p OSC = Open Sound Control
+				p Usa UDP
+
+		x-card.opaque.cover(data-background="img/quneo.png")
 		
+		x-card.opaque
+			div
+				h1 UDP &harr; <code>node-osc</code>
+				p <code>var osc = require('node-osc');</code>
+				p <code>new osc.Server(8888, '0.0.0.0');</code>
+				p <code>new osc.Client('0.0.0.0', 9999);</code>
+
 
 
 		x-card.opaque
-			h1 QuNeo &harr; node.js:<br />OSCBridge
+			div
+				h1 Touch events
+				p <code>oscServer.on('message', <br />&nbsp;&nbsp;function(msg, rinfo) {<br />&nbsp;&nbsp;&nbsp;&nbsp;// ...
+				});</code>
 
 		x-card.opaque
-			h1 UDP<br />con node-osc
+			div
+				h1 Por ejemplo
+				p <code>/quneo/pads/2/drum/pressure</code>
+				p <code>0.7</code>
 
 		x-card.opaque
-			h1 Eventos touch ===<br />nuestro servidor recibe mensajes
+			div
+				h1 Controlar LEDs
+				p <code>oscClient.send(address, value)</code>
 
 		x-card.opaque
-			h1 Para controlar los LEDs ===<br />enviamos mensajes
-			
+			div 
+				h1 Por ejemplo
+				p <code>oscClient.send(<br/>&nbsp;'/quneo/leds/pads/8/NW/red',<br/>&nbsp;0.5<br/>)</code>
+
 
 
 		x-card.opaque
