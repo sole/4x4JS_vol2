@@ -4170,7 +4170,7 @@ function initialiseGear(audioContext) {
 function initialiseGraphics() {
 	renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: true });
 	renderer.autoClear = false;
-	renderer.setClearColorHex(0xFF0000);
+	renderer.setClearColor(0x18fff7);
 	rendererContainer.appendChild(renderer.domElement);
 	onWindowResize();
 
@@ -4181,9 +4181,9 @@ function initialiseGraphics() {
 	var EffectBallsScene = require('./gfx/EffectBallsScene');
 
 	var sequence = [
-		[ EffectClear, { start: 68 } ], // no end == until the end
-		[ EffectCube, { start: 68 } ],
-		[ EffectBallsScene, { start: 76 } ]
+		[ EffectClear, { start: 86 } ], // no end == until the end
+		[ EffectCube, { start: 86 } ],
+		[ EffectBallsScene, { start: 94 } ]
 	];
 
 	var layerNumber = 0;

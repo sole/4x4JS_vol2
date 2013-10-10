@@ -56,23 +56,23 @@ x-card code {
 
 x-card.opaque {
 	color: #fff;
-	text-shadow: 1px 1px 0px #000;
+    text-shadow: 2px 2px 11px rgba(0, 0, 0, 0.7);
 }
 
-x-card.opaque:nth-child(1n) {
-	background-color: #5fc7ab;
+x-card.opaque:nth-child(4n+1) {
+	background-color: #FA3939;
 }
 
-x-card.opaque:nth-child(2n) {
-	background-color: #e49280;
+x-card.opaque:nth-child(4n+2) {
+	background-color: #FA9839;
 }
 
-x-card.opaque:nth-child(3n) {
-	background-color: #CEDF0D;
+x-card.opaque:nth-child(4n+3) {
+	background-color: #FCD720;
 }
 
-x-card.opaque:nth-child(4n) {
-	background-color: #e0a727;
+x-card.opaque:nth-child(4n+4) {
+	background-color: #5AFA39;
 }
 
 x-card.cover {

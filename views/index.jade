@@ -219,7 +219,7 @@ block content
 		x-card.opaque
 			div 
 				h1 Por ejemplo
-				p <code>oscClient.send(<br/>&nbsp;'/quneo/leds/pads/8/NW/red',<br/>&nbsp;0.5<br/>)</code>
+				p <code>oscClient.send(<br/>&nbsp;'/quneo/leds/pads/8/NW/red',<br/>&nbsp;0.5<br/>)</code>	
 
 
 
@@ -256,17 +256,75 @@ block content
 				p Composición: bloques dentro de bloques
 
 		x-card.opaque
-			div
-				h1 Encapsular bloques nativos de Web Audio
-				p Autoregenerar oscillators y buffers
-				p Envolvente ADSR
+			img(src="img/modular-routing2.png")
+
+		x-card.opaque.cover(data-background="img/modular.jpg")
+
+		x-card.opaque.cover(data-background="img/modularkid.jpg")
+		
+		x-card.opaque.cover(data-background="img/modularcat.jpg")
+		
+		x-card.opaque.cover(data-background="img/cat_synth.jpg")
+
+
+
+
+		x-card.opaque
+			h1 Web Audio es una API muy sencilla ===
+	
+		x-card.opaque
+			h1 ... hay que programar muchos helpers
+
+		x-card.opaque
+			h1 Fácil, porque es modular
 
 		x-card.opaque
 			div
-				h1 Nodos propios con ScriptProcessor
+				h1 Ejemplo: OscillatorNode
+				p De un solo uso
+
+		x-card.opaque
+			div
+				h1 Solución: OscillatorVoice
+				p Encapsula OscillatorNode
+				p Si se usa, lo regenera
+
+		x-card.opaque
+			div
+				h1 Ejemplo: control de parámetros
+				p <code>setValueAtTime</code>
+				p <code>setLinearValueAtTime</code>
+				p etc...
+
+		x-card.opaque
+			img(src="img/adsr.png")
+
+		x-card.opaque
+			div
+				h1 Tedioso hacer sequencias
+				p Ejemplo: empezar en 0, subir a 0.8, bajar a 0
+
+		x-card.opaque
+			div
+				h1 Solución: ADSREnvelope
+				p Programa los eventos en el orden correcto
+				p Usa <code>setValueAtTime</code>, etc
+
+
+		x-card.opaque
+			h1 Ejemplo: no hay generador de ruido
+
+		x-card.opaque
+			div
+				h1 Solución: ScriptProcessor
 				p ¡Procesar audio en JavaScript!
 
-
+		x-card.opaque
+			div
+				h1 Ejemplos de ScriptProcessor
+				p - generar ruido
+				p - mezclar señales "creativamente"
+				p - ¡sintes completos!
 
 		x-card.opaque
 			h1 ¿Audio GUI?
