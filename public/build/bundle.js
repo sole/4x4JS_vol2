@@ -4617,7 +4617,7 @@ var EffectBallsScene = function ( renderer ) {
 		var sphereGeometry = new THREE.SphereGeometry(r(10) + 2, 8);
 
 		sphereGeometry.faces.forEach(function(face, idx) {
-			// face.materialIndex = (idx >> 1) % materials.length; // Not exactly right
+			// face.materialIndex = (idx >> 1) % materials.length; // Not exactly right like an amiga ball
 			face.materialIndex = idx % materials.length;
 		});
 

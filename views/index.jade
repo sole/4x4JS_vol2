@@ -407,14 +407,14 @@ block content
 		x-card
 			h1 Tocar en vivo
 
-		x-card.cover(data-background="img/renoise.png")
-			h1 Base de la canción secuenciada en Renoise
-
 		x-card
+			h1 Base en Renoise
+
+		x-card.light.cover(data-background="img/renoise.png")
 			h1 Es un tracker
 
 		x-card
-			h1 En el futuro,<br />un editor web
+			h1 ¿Editor web?
 
 
 
@@ -431,12 +431,15 @@ block content
 				h1 Conceptos tracker
 				p Patrones, canales, filas
 				p "Como Excel, pero divertido"
+	
+		x-card.light.cover(data-background="img/renoise.png")
 
 		x-card
 			div
 				h1 Más la order list
 				p Lista de patrones y el orden en que serán reproducidos
 	
+		x-card.light.cover(data-background="img/renoise.png")
 
 
 		x-card
@@ -448,7 +451,9 @@ block content
 				p <code>{<br />type: NOTE_ON, note_number: 40,<br />timestamp: 0.00032,<br />order: 1, pattern: 3, row: 4<br />instrument: 3, volume: 0.5<br />}</code>
 
 		x-card
-			h1 Valores extra para sincronizar los visuales
+			div
+				h1 Valores extra
+				p para sincronizar los visuales
 
 		x-card
 			h1 Ordenar por timestamp
@@ -457,54 +462,80 @@ block content
 
 
 		x-card
-			h1 Programar eventos de audio con mucha precisión
+			div
+				h1 Máxima precisión
+				p para eventos de audio
 
 		x-card
 			div
-				h1 Pero los eventos de audio no se pueden cancelar
+				h1 Pero no se pueden cancelar
 				p Imposible programar una canción entera y cambiar de opinión después
 
 		x-card
 			div
 				h1 requestAuditionFrame
-				p Lanzar andanadas de eventos periódicamente
+				p Lanzar ráfagas de eventos periódicamente
 				p Lo que quepa en el buffer de audio
 
 		x-card
 			div
-				h1 Puede sonar un poco off
+				h1 Puede sonar un poco "raro"
 				p Es lo que hay
 
 
 
 		x-card
-			h1 Explotar al máximo los datos de notas
+			h1 Explotemos las notas
+
 
 		x-card
 			div
-				h1 Inicialmente están en el formato Nota-Octava
+				h1 Formato inicial
+				p Nota-Octava
 				p Ej: <code>C-4</code> = DO, cuarta octava
 
 		x-card
 			div
-				h1 Los convertimos en números de nota MIDI
+				h1 Convertir en notas MIDI
 				p Ej: <code>C-4</code> es <code>40</code>
 
 		x-card
 			div
-				h1 Entonces se pueden...
-				p Trasponer
+				h1 Entonces podemos...
+				p Transponer notas
 				p Construir arpeggios o acordes
 				p Usarlos visualmente
 
+		x-card
+			div
+				h1 Ej: Transponer notas
+				p En la escala cromática,
+				p una octava tiene 12 notas
+				p <code>C-4</code> = <code>40</code> = DO, cuarta octava
+				p <code>C-5</code> = <code>52</code> = DO, quinta octava
+
+
+		x-card
+			div
+				h1 Ej: Acordes
+				p Tocar varias notas a la vez
+				p siguiendo cierto criterio
+
+		x-card
+			div
+				h1 Ej: Acorde mayor
+				p Tocar nota base, base + 4, base + 7
+				p <code>DO mayor</code> = 40, 44, 47
+				p C-4, E-4, G-4
+				p DO, MI, SOL
 
 		x-card
 			h1 ¿Pero por qué molestarse, si existe Dancer.js?
 
 		x-card
 			div
-				h1 Los datos de una nota son más detallados que la FFT (TRF)
-				p Con FFT no puedes distinguir instrumentos sonando en la misma banda de frecuencia
+				h1 Las notas son más precisas que la FFT
+				p Una FFT no distingue instrumentos en la misma banda de frecuencia
 
 		x-card
 			div
@@ -516,8 +547,9 @@ block content
 			div
 				h1 De la otra manera,
 				p trata con umbrales,
-				p tiempos de ataque y decremento...
-				p (esto no es un haiku).
+				p tiempos de ataque,
+				p y decremento<sup>*</sup>.
+				p <small>*(esto no es un haiku)</small>
 
 
 

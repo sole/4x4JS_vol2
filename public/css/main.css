@@ -132,6 +132,11 @@ x-deck > x-card {
         text-decoration: none;
     }
 
+
+small {
+    font-size: 1.5rem;
+}
+
 /* --- */
 
 canvas {
