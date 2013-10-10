@@ -423,9 +423,10 @@ function setupTwitterThingie() {
 	var existingTweets = [];
 	var tweetPointer = 0;
 	
-	var flipbox = document.querySelector('x-flipbox');
-	var flipFront = flipbox.children[0];
-	var flipBack = flipbox.children[1];
+	//var flipbox = document.querySelector('x-flipbox');
+	//var flipFront = flipbox.children[0];
+	//var flipBack = flipbox.children[1];
+	var flipbox = document.getElementById('twitter');
 
 	socket.on('twitter', function(data) {
 		
@@ -472,7 +473,9 @@ function setupTwitterThingie() {
 		tweetPointer = tweetPointer % existingTweets.length;
 		var tweet = existingTweets[tweetPointer];
 
-		if(flipbox.flipped) {
+		// For "some reason" using flipbox eats the focus of the rest of stuff
+		// soooooo reverting to a plain HTML div to show tweets
+		/*if(flipbox.flipped) {
 			// showing back face
 			flipFront.innerHTML = formatTweet(tweet);
 		} else {
@@ -480,16 +483,16 @@ function setupTwitterThingie() {
 		}
 
 		flipbox.toggle();
-
+		*/
+		flipbox.innerHTML = formatTweet(tweet);
 		tweetPointer++;
 
 	}
 
 	socket.emit('twitter-search');
 
-	// TODO interval
 	updateFlipbox();
-	setInterval(updateFlipbox, 1000);
+	setInterval(updateFlipbox, 5000);
 }
 
 
