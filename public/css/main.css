@@ -235,13 +235,18 @@ gear-oscillator-voice {
 #twitter {
     position: absolute;
     top: auto;
+    left: auto;
     bottom: 0;
-    left: 25%;
-    width: 50%;
-    height: 30%;
+    right: 1rem;
+    width: 25%;
+    height: 50%;
     background: rgba(255, 255, 0, 0.8);
     pointer-events: none;
 }
+    #twitter.hidden {
+        opacity: 0;
+    }
+
     #twitter /*> div*/ {
         padding: 1rem;
         font-size: 2rem;

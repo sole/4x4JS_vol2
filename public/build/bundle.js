@@ -4008,6 +4008,7 @@ function start() {
 	deck = document.querySelector('x-deck');
 	guiContainer = document.getElementById('gui');
 	transportContainer = document.getElementById('transport');
+	twitterContainer = document.getElementById('twitter');
 
 	// load song ajax
 	$.ajax({
@@ -4532,15 +4533,16 @@ function setupKeyboardAndTransport() {
 	window.addEventListener('keyup', function(ev) {
 	
 		var code = ev.keyCode;
-		//console.log(code);
+		console.log(code);
 		switch(code) {
 			// prev/next with arrows too
 			case 37: playerJumpTo(-1); break;
 			case 39: playerJumpTo( 1); break;
 			// misc controls
 			case 70: toggleFullScreen(); break;
-			case 71: toggleGUI(); break;
-			case 84: toggleTransport(); break;
+			case 71: toggleGUI(); break; // g
+			case 84: toggleTransport(); break; // t
+			case 87: toggleTwitter(); break; // w
 		}
 
 	}, false);
@@ -4635,6 +4637,11 @@ function toggleGUI() {
 function toggleTransport() {
 	transportContainer.classList.toggle('hidden');
 }
+
+function toggleTwitter() {
+	twitterContainer.classList.toggle('hidden');
+}
+
 
 function focusPrevInstrument() {
 	rack.selectPrevious();
