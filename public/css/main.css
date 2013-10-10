@@ -59,6 +59,13 @@ x-card.opaque {
     text-shadow: 2px 2px 11px rgba(0, 0, 0, 0.7);
 }
 
+x-card.light {
+    color: #000;
+}
+    x-card.light h1 {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
 x-card.opaque:nth-child(4n+1) {
 	background-color: #FA3939;
 }
@@ -68,7 +75,7 @@ x-card.opaque:nth-child(4n+2) {
 }
 
 x-card.opaque:nth-child(4n+3) {
-	background-color: #FCD720;
+	background-color: #39B6FA;
 }
 
 x-card.opaque:nth-child(4n+4) {

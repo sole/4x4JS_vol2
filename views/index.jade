@@ -84,7 +84,7 @@ block content
 		x-card.opaque.cover(data-background="img/casiopt100.jpg")
 			h1 El mío:<br/>CASIO PT-100
 
-		x-card.opaque.cover(data-background="img/casiopt100_controls.jpg")
+		x-card.opaque.light.cover(data-background="img/casiopt100_controls.jpg")
 			h1 Pocas opciones de configuración
 
 		x-card.opaque
@@ -97,7 +97,7 @@ block content
 		x-card.opaque
 			h1 Y llegaron los 90
 
-		x-card.opaque.cover(data-background="img/multimedia.png")
+		x-card.opaque.light.cover(data-background="img/multimedia.png")
 			h1 OMG MULTIMEDIA!
 
 		x-card.opaque.cover(data-background="img/it.png")
@@ -137,7 +137,7 @@ block content
 		
 
 
-		x-card.opaque
+		x-card.cover(data-background="img/ihearthtml5.png")
 			h1 OMG<br />JavaScript + HTML5!
 
 		x-card.opaque
@@ -383,12 +383,14 @@ block content
 
 
 		x-card
-			h1 ¿Y cuál es el "truco" para componer escenas con three.js?
+			div
+				h1 El "truco"
+				div para componer escenas con three.js
 
 		x-card
 			div
-				h1 Configuración del renderer
-				p <code>renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: true });</code>
+				h1 Configuración
+				p <code>renderer = new THREE.WebGLRenderer({<br/>&nbsp;&nbsp;preserveDrawingBuffer: true<br />});</code>
 				p <code>renderer.autoClear = false;</code>
 			
 		x-card
@@ -405,8 +407,8 @@ block content
 		x-card
 			h1 Tocar en vivo
 
-		x-card
-			h1 El esqueleto de la canción secuenciado con Renoise
+		x-card.cover(data-background="img/renoise.png")
+			h1 Base de la canción secuenciada en Renoise
 
 		x-card
 			h1 Es un tracker

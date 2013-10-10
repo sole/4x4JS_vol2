@@ -4181,9 +4181,9 @@ function initialiseGraphics() {
 	var EffectBallsScene = require('./gfx/EffectBallsScene');
 
 	var sequence = [
-		[ EffectClear, { start: 86 } ], // no end == until the end
-		[ EffectCube, { start: 86 } ],
-		[ EffectBallsScene, { start: 94 } ]
+		[ EffectClear, { start: 87 } ], // no end == until the end
+		[ EffectCube, { start: 87 } ],
+		[ EffectBallsScene, { start: 95 } ]
 	];
 
 	var layerNumber = 0;
