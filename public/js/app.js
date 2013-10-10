@@ -60,7 +60,10 @@ function onSongDataLoaded(data) {
 	setupOSC(gear, player, osc);
 
 	setupKeyboardAndTransport();
-	osc.connect('/');
+	
+	var socket = io.connect('/');
+
+	osc.useSocket(socket);
 
 	resetQuneo();
 

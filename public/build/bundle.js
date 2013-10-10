@@ -3092,6 +3092,13 @@ module.exports = function() {
 
 	};
 
+	// Let someone else tell us which socket to use instead of creating it ourselves
+	// That way we can share the same socket connection with other parts of the app
+	this.useSocket = function(skt) {
+		skt.on('osc', onMessage);
+		socket = skt;
+	};
+
 	
 	this.on = function(address, expectedValue, callback) {
 		
@@ -4034,7 +4041,10 @@ function onSongDataLoaded(data) {
 	setupOSC(gear, player, osc);
 
 	setupKeyboardAndTransport();
-	osc.connect('/');
+	
+	var socket = io.connect('/');
+
+	osc.useSocket(socket);
 
 	resetQuneo();
 
