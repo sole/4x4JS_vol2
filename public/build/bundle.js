@@ -4609,12 +4609,18 @@ var EffectBallsScene = function ( renderer ) {
 
 		this.setSize(window.innerWidth, window.innerHeight);
 
-		var sphereMaterial = new THREE.MeshBasicMaterial({ wireframe: true, wireframeLinewidth: 1, color: 0x000000, opacity: 0.9 });
-		//sphereMaterial.transparent = true;
-		//sphereMaterial.depthWrite = false;
-		//sphereMaterial.blending = THREE.SubstractiveBlending;
+		var material1 = new THREE.MeshBasicMaterial({ color: 0xFF0000 });
+		var material2 = new THREE.MeshBasicMaterial({ color: 0xffffff });
+		var materials = [ material1, material2 ];
+		var sphereMaterial = new THREE.MeshFaceMaterial(materials);
 
 		var sphereGeometry = new THREE.SphereGeometry(r(10) + 2, 8);
+
+		sphereGeometry.faces.forEach(function(face, idx) {
+			// face.materialIndex = (idx >> 1) % materials.length; // Not exactly right
+			face.materialIndex = idx % materials.length;
+		});
+
 		var s = 40;
 
 		for(var i = 0; i < 10; i++) {
