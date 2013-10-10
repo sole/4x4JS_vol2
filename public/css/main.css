@@ -191,6 +191,11 @@ canvas {
 	padding-right: 1rem;
 }
 
+gear-mixer gear-slider+canvas {
+    padding: 0 1rem;
+    display: inline-block;
+}
+
 gear-bajotron {
 }
 

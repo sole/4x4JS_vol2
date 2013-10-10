@@ -1198,10 +1198,18 @@ function Mixer(audioContext) {
 
 function Fader(audioContext, options) {
 
+	var that = this;
 	var compressor = audioContext.createDynamicsCompressor();
 	var gain = audioContext.createGain();
+	
+	var analyser = audioContext.createAnalyser();
+	analyser.fftSize = 32;
+
+	var bufferLength = analyser.frequencyBinCount;
+	var analyserArray = new Uint8Array(bufferLength);
+
 	var label = 'fader';
-	var that = this;
+
 
 	EventDispatcher.call(this);
 
@@ -1223,10 +1231,18 @@ function Fader(audioContext, options) {
 				label = v;
 				that.dispatchEvent({ type: 'label_change', label: v });
 			}
+		},
+		peak: {
+			get: function() {
+				analyser.getByteFrequencyData(analyserArray);
+				return (analyserArray[0] / 256.0);
+			}
 		}
 	});
 
 	compressor.connect(gain);
+	// Measuring before gain is applied-so we can keep track of what is in the channel even if muted
+	compressor.connect(analyser); // TODO optional
 
 	// ~~~
 	
@@ -1570,8 +1586,6 @@ function Oscilloscope(audioContext, options) {
 	var bufferLength = analyser.frequencyBinCount;
 	var timeDomainArray = new Uint8Array(bufferLength);
 
-	console.log('buffer length oscilloscope', bufferLength);
-
 	update();
 
 	//
@@ -1580,7 +1594,7 @@ function Oscilloscope(audioContext, options) {
 
 		requestAnimationFrame(update);
 
-		analyser.getByteTimeDomainData(timeDomainArray);
+		analyser.getByteFrequencyData(timeDomainArray);
 
 		ctx.fillStyle = 'rgb(0, 0, 0)';
 		ctx.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -2336,6 +2350,8 @@ function register() {
 
 				this.slidersContainer = this.querySelector('.sliders');
 				this.sliders = [];
+
+				this.updatePeaksAnimationId = null;
 			}
 		},
 		
@@ -2360,6 +2376,9 @@ function register() {
 				// Channel sliders/faders
 				this.slidersContainer.innerHTML = '';
 				var faders = mixer.faders;
+				var peakContexts = [];
+				var peakWidth = 50;
+				var peakHeight = 5;
 
 				faders.forEach(function(fader, index) {
 					var slider = document.createElement('gear-slider');
@@ -2380,15 +2399,41 @@ function register() {
 						fader.gain = slider.value * 1.0;
 					}, false);
 
-					that.slidersContainer.appendChild(slider);
-					that.slidersContainer.appendChild(document.createElement('br'));
+					var peakCanvas = document.createElement('canvas');
+					peakCanvas.width = peakWidth;
+					peakCanvas.height = peakHeight;
+					var peakContext = peakCanvas.getContext('2d');
+					peakContexts.push(peakContext);
+
+					var div = document.createElement('div');
+					that.slidersContainer.appendChild(div);
+
+					div.appendChild(slider);
+					div.appendChild(peakCanvas);
 				});
 
+				function updatePeaks() {
+					that.updatePeaksAnimationId = requestAnimationFrame(updatePeaks);
+
+					for(var i = 0; i < faders.length; i++) {
+						var ctx = peakContexts[i];
+						var fader = faders[i];
+
+						ctx.fillStyle = 'rgb(33, 33, 33)';
+						ctx.fillRect(0, 0, peakWidth, peakHeight);
+
+						ctx.fillStyle = 'rgb(255, 0, 0)';
+						ctx.fillRect(0, 0, fader.peak * peakWidth, peakHeight);
+					}
+				}
+
+				updatePeaks();
 
 			},
 
 			detach: function() {
 				console.error('detach not implemented');
+				cancelAnimationFrame(that.updatePeaksAnimationId);
 			}
 
 		}
@@ -2672,6 +2717,8 @@ module.exports = {
 
 
 },{}],27:[function(require,module,exports){
+var StringFormat = require('stringformat.js');
+
 var template = '<label><span class="label"></span> <input type="range" min="0" max="100" step="0.0001" /> <span class="valueDisplay">0</span></label>';
 
 function register() {
@@ -2720,7 +2767,7 @@ function register() {
 					if(v !== null) {
 						this.setAttribute('value', v);
 						this.slider.value = v;
-						this.valueDisplay.innerHTML = this.slider.value;
+						this.valueDisplay.innerHTML = StringFormat.toFixed(this.slider.value, 2); // TODO make this value configurable
 					}
 				},
 				get: function() {
@@ -2797,7 +2844,7 @@ module.exports = {
 	register: register
 };
 
-},{}],28:[function(require,module,exports){
+},{"stringformat.js":5}],28:[function(require,module,exports){
 var ADSR = require('./ADSR'),
 	ArithmeticMixer = require('./ArithmeticMixer'),
 	Bajotron = require('./Bajotron'),
@@ -4367,11 +4414,17 @@ function setupKeyboardAndTransport() {
 	// Just in case OSC is not available!
 	$('#play').on('click', play);
 	$('#pause').on('click', pause);
+	$('#frew').on('click', function() {
+		playerJumpToStart();
+	});
 	$('#rew').on('click', function() {
 		playerJumpTo(-1);
 	});
 	$('#fwd').on('click', function() {
 		playerJumpTo(1);
+	});
+	$('#ffwd').on('click', function() {
+		playerJumpToEnd();
 	});
 
 	transportTime = document.getElementById('time');
@@ -4421,6 +4474,18 @@ function pause() {
 	cancelAnimationFrame(updatePlayAnimationId);
 	cancelAnimationFrame(rendererAnimationId);
 	osc.send(Quneo.getPlayLedPath(), 0);
+}
+
+
+function playerJumpToStart() {
+	player.jumpToOrder(0, 0);
+	updateSequencer();
+}
+
+
+function playerJumpToEnd() {
+	player.jumpToOrder(player.orders.length - 1, 0);
+	updateSequencer();
 }
 
 

@@ -440,11 +440,17 @@ function setupKeyboardAndTransport() {
 	// Just in case OSC is not available!
 	$('#play').on('click', play);
 	$('#pause').on('click', pause);
+	$('#frew').on('click', function() {
+		playerJumpToStart();
+	});
 	$('#rew').on('click', function() {
 		playerJumpTo(-1);
 	});
 	$('#fwd').on('click', function() {
 		playerJumpTo(1);
+	});
+	$('#ffwd').on('click', function() {
+		playerJumpToEnd();
 	});
 
 	transportTime = document.getElementById('time');
@@ -494,6 +500,18 @@ function pause() {
 	cancelAnimationFrame(updatePlayAnimationId);
 	cancelAnimationFrame(rendererAnimationId);
 	osc.send(Quneo.getPlayLedPath(), 0);
+}
+
+
+function playerJumpToStart() {
+	player.jumpToOrder(0, 0);
+	updateSequencer();
+}
+
+
+function playerJumpToEnd() {
+	player.jumpToOrder(player.orders.length - 1, 0);
+	updateSequencer();
 }
 
 
