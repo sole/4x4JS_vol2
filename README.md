@@ -26,6 +26,7 @@ And open http://localhost:7777 in your server
 * T toggles transport bar
 * G toggles gear GUI
 * F toggle fullscreen
+* W toggle showing Twitter search for @supersole
 
 ## To do
 
