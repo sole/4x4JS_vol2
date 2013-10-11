@@ -108,7 +108,7 @@ function doTwitterSearch() {
 			console.log(err);
 		} else {
 			twitterResults = results;
-			console.log(results);
+			// console.log(results);
 			if(lastSocket) {
 				lastSocket.emit('twitter', results);
 			}

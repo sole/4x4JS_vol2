@@ -996,7 +996,7 @@ function Colchonator(audioContext, options) {
 
 	function getVoiceByNote(noteNumber) {
 		var index = getVoiceIndexByNote(noteNumber);
-		if(index !== -1) {
+		if(index !== -1 && voices[index] !== undefined) {
 			return voices[index].voice;
 		}
 	}
@@ -4115,13 +4115,19 @@ function initialiseGear(audioContext) {
 
 	// 3 / Congas drum machine
 	var pCongas = 'data/samples/congas/';
+	var pChimo = 'data/samples/chimo/';
 	var dmCongas = new Porrompom(audioContext, {
 		mappings: {
 			'C-4': pCongas + 'CONGUI.wav',
 			'C#4': pCongas + 'CONGUI2.wav',
 			'D-4': pCongas + 'CONGUI3.wav',
 			'D#4': pCongas + 'CONGUI4.wav',
-			'E-4': pCongas + 'CONGUI5.wav'
+			'E-4': pCongas + 'CONGUI5.wav',
+			'C-5': pChimo + 'uha.ogg',
+			'C#5': pChimo + 'uha2.ogg',
+			'D-5': pChimo + 'extasi.ogg',
+			'D#5': pChimo + 'extano.ogg',
+			'G#4': pChimo + 'chiquitan.ogg',
 		}
 	});
 	g.push(dmCongas);
@@ -4401,7 +4407,7 @@ function resetQuneo() {
 
 function setupTwitterThingie() {
 
-	var maxTweets = 30;
+	var maxTweets = 100;
 	var existingTweets = [];
 	var tweetPointer = 0;
 	
@@ -4471,10 +4477,15 @@ function setupTwitterThingie() {
 
 	}
 
-	socket.emit('twitter-search');
+	function requestTweets() {
+		socket.emit('twitter-search');
+	}
 
+	requestTweets();
 	updateFlipbox();
+
 	setInterval(updateFlipbox, 5000);
+	setInterval(requestTweets, 3600 * 1000);
 }
 
 

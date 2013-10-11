@@ -242,6 +242,7 @@ gear-oscillator-voice {
     height: 50%;
     background: rgba(255, 255, 0, 0.8);
     pointer-events: none;
+    overflow: hidden;
 }
     #twitter.hidden {
         opacity: 0;
