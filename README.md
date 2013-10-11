@@ -1,10 +1,10 @@
-# Four to the beat JS
+# Four to the beat JavaScript, vol 2
 
 "In the era of information overload, simple slides just don’t cut it.
 
 Brace yourselves, for you’re going to experience a never-seen-before JavaScript talk. Or rather, a meta-talk: a continuous, seamless display of rich media content where I’ll describe how you can build this kind of engaging, hypnotic talks that involve the speaker, audio, visuals and a good dose of beats. All it takes is a little bit of rhythm."
 
-This is the software I used for my JSConf.eu talk. To run it you need to fire up the node.js server but before that you need to install the dependencies. So...
+This is the software I used for my [GDG DevFest BCN](http://bcn.gdgdevfest.com/) talk. To run it you need to fire up the node.js server but before that you need to install the dependencies. So...
 
 * clone
 * cd to the dir
@@ -32,7 +32,7 @@ And open http://localhost:7777 in your server
 There are many things I wanted to do and might do in the future but I didn't have to do in little more than a month for preparing this talk :-)
 So let me share with you my to-do list:
 
-- twitter thingie
+- twitter thingie with better visuals
 - bajotron release weirdness
 	- if it doesnt reach sustain (?) then on release goes directly to 0 (?)
 - use more controls from quneo
